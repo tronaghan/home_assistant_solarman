@@ -1,123 +1,85 @@
 requests:
-  - start: 0x0000
-    end:  0x0027
+  - start: 0x0200
+    end:  0x021B
     mb_functioncode: 0x03
-  - start: 0x0105
-    end: 0x0114
+  - start: 0x022A
+    end: 0x0245
     mb_functioncode: 0x03
 
 
 parameters:
- - group: solar
-   items: 
-    - name: "PV1 Power"
-      class: "power"
-      state_class: "measurement"      
-      uom: "W"
-      scale: 10
-      rule: 1
-      registers: [0x000A]
-      icon: 'mdi:solar-power'
-
-    - name: "PV2 Power"
-      class: "power"
-      state_class: "measurement"      
-      uom: "W"
-      scale: 10
-      rule: 1
-      registers: [0x000B]
-      icon: 'mdi:solar-power'
-
-    - name: "PV1 Voltage"
-      class: "voltage"
-      state_class: "measurement"      
-      uom: "V"
-      scale: 0.1
-      rule: 1 
-      registers: [0x0006]
-      icon: 'mdi:solar-power'
-
-    - name: "PV2 Voltage"
-      class: "voltage"    
-      state_class: "measurement"      
-      uom: "V"
-      scale: 0.1
-      rule: 1
-      registers: [0x0008]
-      icon: 'mdi:solar-power'      
-
-    - name: "PV1 Current"
-      class: "current"
-      state_class: "measurement"      
-      uom: "A"
-      scale: 0.01
-      rule: 1
-      registers: [0x0007]
-      icon: 'mdi:solar-power'      
-
-    - name: "PV2 Current"
-      class: "current"
-      state_class: "measurement"      
-      uom: "A"
-      scale: 0.01
-      rule: 1
-      registers: [0x0009]
-      icon: 'mdi:solar-power'      
-
-    - name: "Daily Production"
-      class: "energy"
-      state_class: "total"      
-      uom: "kWh"
-      scale: 0.01
-      rule: 1
-      registers: [0x0019]
-      icon: 'mdi:solar-power'      
-
-    - name: "Total Production"
-      class: "energy"
-      state_class: "total_increasing"      
-      uom: "kWh"
-      scale: 1
-      rule: 3
-      registers: [0x0016,0x0015]
-      icon: 'mdi:solar-power'      
-
-    - name: "Total generation time"
-      class: ""
-      state_class: "measurement"      
-      uom: "h"
-      scale: 1
-      rule: 3
-      registers: [0x0018,0x0017]
-      icon: 'mdi:clock-outline'   
-
-    - name: "Today generation time"
-      class: ""
-      state_class: "measurement"      
-      uom: "min"
-      scale: 1
-      rule: 1
-      registers: [0x001A]
-      icon: 'mdi:clock-outline'      
-
  - group: Output
    items: 
-    - name: "Output active power"
+    - name: "The power of load"
       class: "power"
       state_class: "measurement"      
       uom: "W"
-      scale: 10
-      rule: 1
-      registers: [0x000C]
-      icon: 'mdi:home-lightning-bolt'
-
-    - name: "Output reactive power"
-      class: ""
-      state_class: "measurement"      
-      uom: "kVar"
       scale: 0.01
       rule: 1
-      registers: [0x000D]
+      registers: [0x0213]
+      icon: 'mdi:home-lightning-bolt'
+
+    - name: "Feed in/out power"
+      class: "power"
+      state_class: "measurement"      
+      uom: "W"
+      scale: 0.01
+      rule: 2
+      registers: [0x0212]
+      icon: 'mdi:home-lightning-bolt'
+
+    - name: "Input/output power"
+      class: "power"
+      state_class: "measurement"      
+      uom: "W"
+      scale: 0.01
+      rule: 2
+      registers: [0x0214]
+      icon: 'mdi:home-lightning-bolt'
+
+    - name: "The power of generation"
+      class: "power"
+      state_class: "measurement"      
+      uom: "W"
+      scale: 0.01
+      rule: 1
+      registers: [0x0215]
+      icon: 'mdi:home-lightning-bolt'
+
+    - name: "Generation of one day"
+      class: "energy"
+      state_class: "measurement"      
+      uom: "Wh"
+      scale: 10
+      rule: 1
+      registers: [0x0218]
+      icon: 'mdi:home-lightning-bolt'
+
+    - name: "Energy sell to grid today"
+      class: "energy"
+      state_class: "measurement"      
+      uom: "Wh"
+      scale: 10
+      rule: 1
+      registers: [0x0219]
+      icon: 'mdi:home-lightning-bolt'
+
+    - name: "Energy bought from grid today"
+      class: "energy"
+      state_class: "measurement"      
+      uom: "Wh"
+      scale: 10
+      rule: 1
+      registers: [0x021A]
+      icon: 'mdi:home-lightning-bolt'
+
+    - name: "Today consumption"
+      class: "energy"
+      state_class: "measurement"      
+      uom: "Wh"
+      scale: 10
+      rule: 1
+      registers: [0x021B]
       icon: 'mdi:home-lightning-bolt'
 
     - name: "Grid frequency"
@@ -126,61 +88,88 @@ parameters:
       uom: "Hz"
       scale: 0.01
       rule: 1
-      registers: [0x000E]
+      registers: [0x020C]
       icon: 'mdi:home-lightning-bolt'
 
-    - name: "L1 Voltage"
+    - name: "Grid A Voltage"
       class: "voltage"
       state_class: "measurement"      
       uom: "V"
       scale: 0.1
       rule: 1
-      registers: [0x000F]
+      registers: [0x0206]
       icon: 'mdi:home-lightning-bolt'
 
-    - name: "L1 Current"
+    - name: "Grid A Current"
       class: "current"
       state_class: "measurement"      
       uom: "A"
       scale: 0.01
-      rule: 1
-      registers: [0x0010]
+      rule: 2
+      registers: [0x0207]
       icon: 'mdi:home-lightning-bolt'
 
-    - name: "L2 Voltage"
+    - name: "Grid B Voltage"
       class: "voltage"
       state_class: "measurement"      
       uom: "V"
       scale: 0.1
       rule: 1
-      registers: [0x0011]
+      registers: [0x0208]
       icon: 'mdi:home-lightning-bolt'
 
-    - name: "L2 Current"
+    - name: "Grid B Current"
       class: "current"
       state_class: "measurement"      
       uom: "A"
       scale: 0.01
-      rule: 1
-      registers: [0x0012]
+      rule: 2
+      registers: [0x0209]
       icon: 'mdi:home-lightning-bolt'
 
-    - name: "L3 Voltage"
+    - name: "Grid C Voltage"
       class: "voltage"
       state_class: "measurement"      
       uom: "V"
       scale: 0.1
       rule: 1
-      registers: [0x0013]
+      registers: [0x020A]
       icon: 'mdi:home-lightning-bolt'
 
-    - name: "L3 Current"
+    - name: "Grid C Current"
       class: "current"
       state_class: "measurement"      
       uom: "A"
       scale: 0.01
+      rule: 2
+      registers: [0x020B]
+      icon: 'mdi:home-lightning-bolt'
+
+    - name: "Charge/Discharge power"
+      class: "power"
+      state_class: "measurement"      
+      uom: "W"
+      scale: 0.01
+      rule: 2
+      registers: [0x020D]
+      icon: 'mdi:home-lightning-bolt'
+
+    - name: "Battery voltage"
+      class: "voltage"
+      state_class: "measurement"      
+      uom: "V"
+      scale: 0.1
       rule: 1
-      registers: [0x0014]
+      registers: [0x020E]
+      icon: 'mdi:home-lightning-bolt'
+
+    - name: "Battery Charge/Discharge current"
+      class: "current"
+      state_class: "measurement"      
+      uom: "A"
+      scale: 0.01
+      rule: 2
+      registers: [0x020B]
       icon: 'mdi:home-lightning-bolt'
 
  - group: Inverter
@@ -191,26 +180,32 @@ parameters:
       uom: ""
       scale: 1
       rule: 1
-      registers: [0x0000]
+      registers: [0x0200]
       lookup: 
       -  key: 0
-         value: "Stand-by"
+         value: "Wait State"
       -  key: 1
-         value: "Self-checking"
+         value: "Check State"
       -  key: 2
-         value: "Normal"
+         value: "Normal State"
       -  key: 3
-         value: "FAULT"
+         value: "Discharging Check State"
       -  key: 4
-         value: "Permanent"
+         value: "Discharging State"
+      -  key: 5
+         value: "EPS State"
+      -  key: 6
+         value: "Fault State"
+      -  key: 7
+         value: "Permanent State"
       icon: 'mdi:wrench'         
 
-    - name: "Inverter module temperature"
+    - name: "Inverter heat sink temperature"
       class: "temperature"
       uom: "°C"
       scale: 1
-      rule: 1
-      registers: [0x001B]
+      rule: 2
+      registers: [0x0239]
       icon: 'mdi:thermometer'
 
     - name: "Inverter inner temperature"
@@ -218,35 +213,53 @@ parameters:
       state_class: "measurement"      
       uom: "°C"
       scale: 1
-      rule: 1
-      registers: [0x001C]
+      rule: 2
+      registers: [0x0238]
       icon: 'mdi:thermometer'      
 
-    - name: "Inverter bus voltage"
+    - name: "Voltage dc component"
+      class: "voltage"
+      state_class: "measurement"      
+      uom: "V"
+      scale: 0.1
+      rule: 2
+      registers: [0x023C]
+      icon: 'mdi:home-lightning-bolt'
+
+    - name: "Current dc component"
+      class: "current"
+      state_class: "measurement"      
+      uom: "A"
+      scale: 0.1
+      rule: 2
+      registers: [0x023B]
+      icon: 'mdi:home-lightning-bolt'
+
+    - name: "INV bus voltage"
+      class: "voltage"
+      state_class: "measurement"      
+      uom: "V"
+      scale: 0.1
+      rule: 2
+      registers: [0x022D]
+      icon: 'mdi:home-lightning-bolt'
+
+    - name: "LLC bus voltage"
       class: "voltage"
       state_class: "measurement"      
       uom: "V"
       scale: 0.1
       rule: 1
-      registers: [0x001D]
+      registers: [0x022E]
       icon: 'mdi:home-lightning-bolt'
 
-    - name: "PV1 voltage sample by slave CPU"
-      class: "voltage"
-      state_class: "measurement"      
-      uom: "V"
-      scale: 0.1
-      rule: 1
-      registers: [0x001E]
-      icon: 'mdi:home-lightning-bolt'
-
-    - name: "PV1 current sample by slave CPU"
+    - name: "Buck current"
       class: "current"
       state_class: "measurement"      
       uom: "A"
       scale: 0.1
       rule: 1
-      registers: [0x001F]
+      registers: [0x022F]
       icon: 'mdi:home-lightning-bolt'
 
     - name: "Countdown time"
@@ -255,7 +268,7 @@ parameters:
       uom: "s"
       scale: 1
       rule: 1
-      registers: [0x0020]
+      registers: [0x022A]
       icon: ''
 
     - name: "Inverter alert message"
@@ -264,16 +277,7 @@ parameters:
       uom: ""
       scale: 1
       rule: 1
-      registers: [0x0021]
-      icon: ''
-
-    - name: "Input mode"
-      class: ""
-      state_class: ""      
-      uom: ""
-      scale: 1
-      rule: 1
-      registers: [0x0022]
+      registers: [0x022B]
       icon: ''
 
     - name: "Communication Board inner message"
@@ -282,35 +286,80 @@ parameters:
       uom: ""
       scale: 1
       rule: 1
-      registers: [0x0023]
+      registers: [0x0242]
       icon: ''
-
-    - name: "Insulation of PV1+ to ground"
-      class: ""
+      
+    - name: "Today generation time"
+      class: "time"
       state_class: "measurement"      
-      uom: ""
+      uom: "min"
       scale: 1
       rule: 1
-      registers: [0x0024]
+      registers: [0x0243]
+      icon: 'mdi:home-lightning-bolt'
+
+    - name: "Grid R Voltage"
+      class: "voltage"
+      state_class: "measurement"      
+      uom: "V"
+      scale: 0.1
+      rule: 1
+      registers: [0x0230]
       icon: ''
 
-    - name: "Insulation of PV2+ to ground"
-      class: ""
+    - name: "Grid R Current"
+      class: "current"
       state_class: "measurement"      
-      uom: ""
-      scale: 1
+      uom: "A"
+      scale: 0.01
       rule: 1
-      registers: [0x0025]
+      registers: [0x0231]
       icon: ''
 
-    - name: "Insulation of PV- to ground"
-      class: ""
+    - name: "Grid S Voltage"
+      class: "voltage"
       state_class: "measurement"      
-      uom: ""
+      uom: "V"
+      scale: 0.1
+      rule: 1
+      registers: [0x0232]
+      icon: ''
+
+    - name: "Grid S Current"
+      class: "current"
+      state_class: "measurement"      
+      uom: "A"
+      scale: 0.01
+      rule: 1
+      registers: [0x0233]
+      icon: '' 
+
+    - name: "Grid T Voltage"
+      class: "voltage"
+      state_class: "measurement"      
+      uom: "V"
+      scale: 0.1
+      rule: 1
+      registers: [0x0234]
+      icon: ''
+
+    - name: "Grid T Current"
+      class: "current"
+      state_class: "measurement"      
+      uom: "A"
+      scale: 0.01
+      rule: 1
+      registers: [0x0235]
+      icon: '' 
+
+    - name: "Generation current"
+      class: "current"
+      state_class: "measurement"      
+      uom: "A"
       scale: 1
       rule: 1
-      registers: [0x0026]
-      icon: ''
+      registers: [0x0236]
+      icon: '' 
 
     - name: "Country"
       class: ""
@@ -318,7 +367,7 @@ parameters:
       uom: ""
       scale: 1
       rule: 1
-      registers: [0x0027]
+      registers: [0x023A]
       lookup: 
       -  key: 0
          value: "Germany"
@@ -390,7 +439,7 @@ parameters:
       uom: ""
       scale: 1
       rule: 1
-      registers: [0x0001]
+      registers: [0x0201]
       lookup: 
       -  key: 0
          value: "No error"
@@ -403,29 +452,29 @@ parameters:
       -  key: 8
          value: "ID04 Grid Under Frequency Protection"
       -  key: 16
-         value: "ID05 PV Under Voltage Protection"
+         value: "ID05 Battery Over Voltage"
       -  key: 32
-         value: "ID06 Grid Low Voltage Ride through"
+         value: "ID06"
       -  key: 64
          value: "ID07"
       -  key: 128
          value: "ID08"
       -  key: 256
-         value: "ID09 PV Over Voltage Protection"
+         value: "ID09 LLCBus Over Voltage Hardware"
       -  key: 512
-         value: "ID10 PV Input Current Unbalanced"
+         value: "ID10 Bus Over Voltage Hardware"
       -  key: 1024
-         value: "ID11 PV Input Mode wrong configuration"
+         value: "ID11 BuckBoost over Current Hardware"
       -  key: 2048
-         value: "ID12 Ground-Fault circuit interrupters fault"
+         value: "ID12 Battery over Current Hardware"
       -  key: 4096
-         value: "ID13 Phase sequence fault"
+         value: "ID13"
       -  key: 8192
-         value: "ID14 Hardware boost over current protection"
+         value: "ID14"
       -  key: 16384
-         value: "ID15 Hardware AC over current protection"
+         value: "ID15 Output Current Hardware"
       -  key: 32768
-         value: "ID16 Grid current is too high"
+         value: "ID16"
       icon: 'mdi:wrench'  
 
     - name: "Fault 2"
@@ -434,7 +483,7 @@ parameters:
       uom: ""
       scale: 1
       rule: 1
-      registers: [0x0002]
+      registers: [0x0202]
       lookup: 
       -  key: 0
          value: "No error"
@@ -445,29 +494,29 @@ parameters:
       -  key: 4
          value: "ID19 Grid voltage sampling error"
       -  key: 8
-         value: "ID20 GFCI device sampling error"
+         value: "ID20"
       -  key: 16
          value: "ID21 Main chip fault"
       -  key: 32
          value: "ID22 Hardware auxiliary power fault"
       -  key: 64
-         value: "ID23 Bus voltage zero fault"
+         value: "ID23"
       -  key: 128
-         value: "ID24 Output current not balanced"
+         value: "ID24"
       -  key: 256
-         value: "ID25 Bus under voltage protection"
+         value: "ID25 LLCBus Over Current protection"
       -  key: 512
          value: "ID26 Bus over voltage protection"
       -  key: 1024
-         value: "ID27 Bus voltage unbalanced"
+         value: "ID27 Battery Over Current protection"
       -  key: 2048
-         value: "ID28 DCI is too high"
+         value: "ID28 Dci Over Current Protection"
       -  key: 4096
-         value: "ID29 Grid current is too high"
+         value: "ID29 Output over current software"
       -  key: 8192
-         value: "ID30 Input current is too high"
+         value: "ID30 Buck Over Current"
       -  key: 16384
-         value: "ID31"
+         value: "ID31 Output over current protection"
       -  key: 32768
          value: "ID32"
       icon: 'mdi:wrench'  
@@ -478,7 +527,7 @@ parameters:
       uom: ""
       scale: 1
       rule: 1
-      registers: [0x0003]
+      registers: [0x0203]
       lookup: 
       -  key: 0
          value: "No error"
@@ -522,7 +571,7 @@ parameters:
       uom: ""
       scale: 1
       rule: 1
-      registers: [0x0004]
+      registers: [0x0204]
       lookup: 
       -  key: 0
          value: "No error"
@@ -541,7 +590,7 @@ parameters:
       -  key: 64
          value: "ID55 Relay fault"
       -  key: 128
-         value: "ID56 Insulation resistance between PV array and the earth is too low"
+         value: "ID56"
       -  key: 256
          value: "ID57 Inverter temp is too high"
       -  key: 512
@@ -549,7 +598,7 @@ parameters:
       -  key: 1024
          value: "ID59 Environment temp is too high"
       -  key: 2048
-         value: "ID60 Brak podłączenie falownika do kabla PE"
+         value: "ID60"
       -  key: 4096
          value: "ID61 Reserved"
       -  key: 8192
@@ -566,7 +615,7 @@ parameters:
       uom: ""
       scale: 1
       rule: 1
-      registers: [0x0005]
+      registers: [0x0205]
       lookup: 
       -  key: 0
          value: "No error"
@@ -575,25 +624,25 @@ parameters:
       -  key: 2
          value: "ID66 Bus voltage is too high and causes unrecoverable fault"
       -  key: 4
-         value: "ID67 Grid current is unbalanced and causes unrecoverable fault"
+         value: "ID67 EPS Mode Battery Over current,and has cause unrecoverable fault"
       -  key: 8
-         value: "ID68 Input current is unbalanced and causes unrecoverable fault"
+         value: "ID68"
       -  key: 16
-         value: "ID69 Bus voltage is unbalanced and causes unrecoverable fault"
+         value: "ID69"
       -  key: 32
-         value: "ID70 Grid current is too high and causes unrecoverable fault"
+         value: "ID70 The Output current is too high,and has cause unrecoverable fault"
       -  key: 64
-         value: "ID65 PV Input Mode Configuration is wrong and causes unrecoverable fault"
+         value: "ID71"
       -  key: 128
          value: "ID72 Reserved"
       -  key: 256
          value: "ID73 Reserved"
       -  key: 512
-         value: "ID74 Input current is too high and causes unrecoverable fault"
+         value: "ID74"
       -  key: 1024
-         value: "ID75 Error reading from EEPROM"
+         value: "ID75 Error writing from EEPROM"
       -  key: 2048
-         value: "ID76 Error writing to EEPROM"
+         value: "ID76 Error reading to EEPROM"
       -  key: 4096
          value: "ID77 Relay fauilure causes unrecoverable fault"
       -  key: 8192
